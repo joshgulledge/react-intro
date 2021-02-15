@@ -6,9 +6,10 @@ import { useState } from 'react';
 
 // App is a component
 function App() {
-  let myName = 'josh';
+  const [name, setName] = useState('Josh');
+  // let myName = 'josh';
 
-  let myH1 = <h1>Go home, {myName}, you're Drunk</h1>;
+  let myH1 = <h1>Go home, {name}, you're Drunk</h1>;
 
   // does not render this way
   // let drinkCount = 1;
@@ -26,7 +27,7 @@ function App() {
     <div>
       <h1>Cullen Happy Hour!</h1>
       <p>
-        {myName} has had {drinkCount} Drinks
+        {name} has had {drinkCount} Drinks
       </p>
 
       <button
@@ -39,6 +40,14 @@ function App() {
       </button>
 
       <button onClick={soberUp}>Get Sober</button>
+
+      <input
+        placeholder="Enter your name"
+        onChange={(e) => {
+          console.log(e.target.value);
+          setName(e.target.value);
+        }}
+      ></input>
     </div>
   );
 }
