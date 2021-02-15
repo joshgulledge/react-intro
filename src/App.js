@@ -13,6 +13,10 @@ function App() {
   // does not render this way
   // let drinkCount = 1;
 
+  const soberUp = function () {
+    setDrinkCount(0);
+  };
+
   const [drinkCount, setDrinkCount] = useState(1);
 
   // 'HTML' is acutally 'JSX'
@@ -34,14 +38,7 @@ function App() {
         Drink Up
       </button>
 
-      <button
-        onClick={function () {
-          console.log('you clicked me, jerk');
-          setDrinkCount(0);
-        }}
-      >
-        Get Sober
-      </button>
+      <button onClick={soberUp}>Get Sober</button>
     </div>
   );
 }
