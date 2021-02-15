@@ -2,33 +2,46 @@ import logo from './logo.svg';
 import './App.css';
 import HelloCullen from './HelloCullen';
 
+import { useState } from 'react';
+
 // App is a component
 function App() {
   let myName = 'josh';
 
   let myH1 = <h1>Go home, {myName}, you're Drunk</h1>;
+
+  // does not render this way
+  // let drinkCount = 1;
+
+  const [drinkCount, setDrinkCount] = useState(1);
+
   // 'HTML' is acutally 'JSX'
   // "Javascript eXtended"
   // App.jsk
   return (
-    <div className="App">
-      {myH1}
-      <header className="App-header">
-        {/*HelloCullen is a react component */}
-        <HelloCullen />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Cullen Happy Hour!</h1>
+      <p>
+        {myName} has had {drinkCount} Drinks
+      </p>
+
+      <button
+        onClick={function () {
+          console.log('you clicked me, jerk');
+          setDrinkCount(drinkCount + 1);
+        }}
+      >
+        Drink Up
+      </button>
+
+      <button
+        onClick={function () {
+          console.log('you clicked me, jerk');
+          setDrinkCount(0);
+        }}
+      >
+        Get Sober
+      </button>
     </div>
   );
 }
