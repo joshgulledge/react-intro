@@ -9,6 +9,8 @@ function App() {
   const [name, setName] = useState('Josh');
   // let myName = 'josh';
 
+  const [nameInput, setNameInput] = useState('')
+
   let myH1 = <h1>Go home, {name}, you're Drunk</h1>;
 
   // does not render this way
@@ -17,6 +19,18 @@ function App() {
   const soberUp = function () {
     setDrinkCount(0);
   };
+
+  const onSubmit = (event) => {
+    event.preventDefault()
+    console.log('name', name);
+    console.log('nameInput', nameInput);
+    // grad the value from input field
+    // and update the name
+    setName(nameInput)
+
+    // clear name input
+    setNameInput('');
+  }
 
   const [drinkCount, setDrinkCount] = useState(1);
 
@@ -41,13 +55,17 @@ function App() {
 
       <button onClick={soberUp}>Get Sober</button>
 
+      <form onSubmit={onSubmit}>
       <input
+        value={nameInput}
         placeholder="Enter your name"
         onChange={(e) => {
           console.log(e.target.value);
-          setName(e.target.value);
-        }}
-      ></input>
+          setNameInput(e.target.value);
+        }}></input>
+
+        <input type="submit"></input>
+      </form>
     </div>
   );
 }
